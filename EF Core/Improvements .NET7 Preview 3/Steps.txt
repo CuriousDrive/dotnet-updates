@@ -1,0 +1,9 @@
+Packages to install =>
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 7.0.0-preview.3.22175.1
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 7.0.0-preview.3.22175.1
+
+Install & Update dotnet EF tool =>
+dotnet tool install --global dotnet-ef --version 7.0.0-preview.3.22175.1
+
+Scaffold SQLite Database =>
+dotnet ef dbcontext scaffold "Data source=./northwind.sqlite" Microsoft.EntityFrameworkCore.Sqlite --output-dir Models --context-dir Data --namespace Northwind.Models --context-namespace Northwind.Data --context NorthwindContext -f 

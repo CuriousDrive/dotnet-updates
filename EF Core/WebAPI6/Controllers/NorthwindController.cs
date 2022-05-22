@@ -22,7 +22,7 @@ public class NorthwindController : ControllerBase
     [HttpGet(Name = "GetCategories")]
     public async Task<IEnumerable<Category>> Get()
     {
-        // insert categories
+        // Inserting
         var category = new Category();
         category.CategoryName = "Hardware";
         category.Description = "Screws, Bolts, Tools";
@@ -32,7 +32,15 @@ public class NorthwindController : ControllerBase
         
         Console.WriteLine("Auto Generated Id is : " + category.CategoryId);
 
+        // Updating
+        _northwindContext.Categories.Update(category);
+        await _northwindContext.SaveChangesAsync();
+
+        // Deleting
+        _northwindContext.Categories.Remove(category);
+        await _northwindContext.SaveChangesAsync();
+
         // return categories        
-        return await _northwindContext.Categories.ToListAsync();
+        return new List<Category>();
     }
 }

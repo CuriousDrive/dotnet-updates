@@ -22,11 +22,12 @@ public class NorthwindController : ControllerBase
     [HttpGet(Name = "GetCategories")]
     public async Task<IEnumerable<Category>> Get()
     {
-        // Inserting
+        // New Category
         var category = new Category();
         category.CategoryName = "Hardware";
         category.Description = "Screws, Bolts, Tools";
 
+        // Inserting
         _northwindContext.Categories.Add(category);
         await _northwindContext.SaveChangesAsync();
         
